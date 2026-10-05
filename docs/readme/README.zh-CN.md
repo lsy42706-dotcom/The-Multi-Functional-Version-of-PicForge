@@ -4,7 +4,9 @@
 
 压缩图片、拆分 Android 动态照片、转换 iOS 实况照片。一个在浏览器里运行的开源工具箱，文件始终留在你的设备上。
 
-[打开 PicForge](https://picforge.de) · [English](../../README.md) · **简体中文** · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
+[打开 PicForge Studio](https://picforge-studio.lsy42706.chatgpt.site) · [English](../../README.md) · **简体中文** · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
+
+**离线单文件 HTML：** 支持将应用、滤镜、圆形局部调色和编码引擎打包到一个文件，直接用外部浏览器打开，无需联网、服务器或网页跳转。见[构建与使用说明](../portable-html.md)。大型成品保存在源码工作区之外，不纳入 Git 历史。
 
 ![PicForge：原图与压缩结果对比、文件队列和输出设置](../assets/readme/compression-zh-CN.jpg)
 

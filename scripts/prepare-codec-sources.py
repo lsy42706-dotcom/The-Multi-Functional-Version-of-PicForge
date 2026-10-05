@@ -7,6 +7,10 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'packages/app/public/licenses/sources'
+MANIFEST = OUTPUT / 'manifest.json'
+PINNED = {entry['archive']: entry for entry in
+          (json.loads(MANIFEST.read_text(encoding='utf-8')).get('sources', [])
+           if MANIFEST.exists() else [])}
 SOURCES = [
     ('ffmpeg-wasm', 'ffmpegwasm/ffmpeg.wasm', 'v12.15'),
     ('ffmpeg', 'FFmpeg/FFmpeg', 'n5.1.4'),
@@ -34,7 +38,9 @@ def download(source):
     name, repo, ref = source
     filename = f'{name}-{ref}.tar.gz'
     url = f'https://codeload.github.com/{repo}/tar.gz/{ref}'
-    return fetch(name, ref, url, filename)
+    pinned = PINNED.get(filename)
+    expected = pinned['sha256'] if pinned and pinned['revision'] == ref else None
+    return fetch(name, ref, url, filename, expected)
 
 def fetch(name, ref, url, filename, expected=None):
     target = OUTPUT / filename

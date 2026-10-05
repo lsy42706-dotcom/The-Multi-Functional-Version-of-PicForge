@@ -2,7 +2,7 @@
 
 PicForge is a browser-only image toolbox for image compression, Android Motion
 Photo extraction and iOS Live Photo conversion. The working package version is
-**0.19.2**; package metadata does not establish a release or deployment.
+**0.19.3**; package metadata does not establish a release or deployment.
 
 These documents describe the current implementation and its operating constraints.
 Validation commands specify how to check a checkout, not a claim that it has passed.
@@ -13,6 +13,7 @@ Validation commands specify how to check a checkout, not a claim that it has pas
 | [Validation](validation.md) | Required checks, browser/media prerequisites and evidence boundaries |
 | [Performance](performance/README.md) | Reusable engine, codec and application measurement commands |
 | [Animation](animation-pipeline.md) | GIF/APNG to animated WebP, timing and resource limits |
+| [Single HTML](portable-html.md) | Build and open the self-contained offline edition |
 | [HEIC assets](heif-build.md) | Pinned decoder, integrity checks and deliberate rebuilds |
 | [Interface](UI_DESIGN.md) | Current layout, controls and UI automation |
 | [QA checklist](QA_CHECKLIST.md) | Manual interaction, accessibility and offline checks |

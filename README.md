@@ -8,6 +8,8 @@ Compress images, split Android Motion Photos, and convert iOS Live Photos. An op
 
 [Open PicForge Studio](https://picforge-studio.lsy42706.chatgpt.site) · **English** · [简体中文](docs/readme/README.zh-CN.md) · [繁體中文](docs/readme/README.zh-TW.md) · [日本語](docs/readme/README.ja.md) · [한국어](docs/readme/README.ko.md)
 
+**Offline single HTML:** build one file containing the app, filters, circular local edits and encoding engines. Open it directly in an external browser without a server or internet connection. See the [single HTML build guide](docs/portable-html.md). The large generated file stays outside the source workspace and Git history.
+
 ![PicForge: original and compressed image, file queue and output settings](docs/assets/readme/compression-en.jpg)
 
 *The current interface, processing the project's generated dune sample. Sizes shown are actual results for this image, not a compression benchmark.*
