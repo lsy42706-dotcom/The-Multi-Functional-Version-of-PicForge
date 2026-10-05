@@ -1,0 +1,60 @@
+PicForge third-party media components
+
+PicForge application source: MIT. The separately distributed codec binaries are NOT MIT.
+
+MotionFlow binary extraction design: Copyright (c) 2025 Dejavu Moe <admin@dejavu.moe>, MIT (MotionFlow-MIT.txt).
+
+@ffmpeg/ffmpeg 0.12.15: MIT wrapper.
+@ffmpeg/core 0.12.10: GPL-2.0-or-later, FFmpeg with GPL codec components including x264.
+License: FFmpeg-GPL-2.0.txt. Build scripts and pinned external component source revisions:
+https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15
+https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v12.15/build
+https://github.com/FFmpeg/FFmpeg
+https://code.videolan.org/videolan/x264
+Binary is copied without modification from the pinned npm package by scripts/prepare-codecs.mjs.
+Redistributors must satisfy corresponding-source distribution obligations for the codec binary;
+these links identify upstream sources and are not a substitute for a corresponding-source release archive.
+
+libheif 1.23.4 and libde265 1.1.1: LGPL-3.0 / LGPL-3.0-or-later.
+License: libheif-LGPL-3.0.txt, plus /wasm/heif-1.23.4-de265-1.1.1/LICENSE (upstream component licenses).
+PicForge includes the prebuilt HEVC-only browser module as versioned static assets.
+It was built from checksum-pinned upstream sources with Emscripten 3.1.61;
+rebuild instructions: scripts/build-heif.py and docs/heif-build.md.
+https://github.com/strukturag/libheif/releases/tag/v1.23.4
+https://github.com/strukturag/libde265/releases/tag/v1.1.1
+The separately served module/WASM can be replaced independently. The generated
+/wasm/heif-1.23.4-de265-1.1.1/build-manifest.json records source and binary hashes and build flags.
+Before public binary distribution, provide corresponding sources and required
+relinking materials; upstream links alone do not replace those obligations.
+Historical libheif-js wrapper source: https://github.com/catdad-experiments/libheif-js
+
+Existing image encoders: @jsquash/jpeg, @jsquash/webp, @jsquash/avif, @jsquash/oxipng.
+Source, licenses and build instructions: https://github.com/jamsinclair/jSquash
+
+wasm-vips 0.0.18: MIT JavaScript wrapper; libvips/glib and other components have their own
+licenses, including LGPLv3. Historical experimental engine, removed in 0.18.0; it was never part
+of the default application bundle. wasm-vips-MIT.txt and wasm-vips-0.0.18-NOTICES.md are retained
+for attribution. Source: https://github.com/kleisauke/wasm-vips/tree/v0.0.18
+
+PicForge applies version-specific pnpm patches to @jsquash/avif 2.1.1 and
+@jsquash/oxipng 2.3.0 JavaScript initialization wrappers to retain single-thread
+encoding under cross-origin isolation. Patch sources are in the repository's
+patches/ directory. The WASM binaries and upstream license notices are unchanged.
+The Vite build also rewrites the five compression wrappers' default WASM URLs
+to the existing /wasm/ static assets, avoiding duplicate binaries. Source mapping:
+packages/app/scripts/static-codecs.mjs. Codec algorithms and WASM bytes are unchanged.
+
+Hyalite 0.3.0: MIT, Copyright (c) 2026 VII-Cae.
+Source: https://github.com/VII-Cae/hyalite--liquid-glass/tree/b0692b8aecdf264fcb49276f45d7d1d1f80f6dd0
+Historical UI component, removed from the runtime in 0.16.0.
+License: Hyalite-MIT.txt is retained for attribution; it was not used for media processing.
+
+IBM Plex Sans (variable, @fontsource-variable/ibm-plex-sans 5.3.0) and IBM Plex Mono
+(@fontsource/ibm-plex-mono 5.3.0): SIL Open Font License 1.1, Copyright 2017-2019 IBM Corp.
+Only the Latin and Latin Extended subsets are served, unmodified, as self-hosted WOFF2 interface fonts.
+Brand artwork outlines IBM Plex Sans 1.1.0 glyphs. License: IBM-Plex-OFL-1.1.txt.
+Source: https://github.com/IBM/plex
+
+This distribution includes corresponding codec source archives, component licenses,
+build scripts and checksums at /licenses/sources/ (README.txt and manifest.json).
+The FFmpeg build release v12.15 contains @ffmpeg/core 0.12.10.

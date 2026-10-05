@@ -1,7 +1,127 @@
-# PicForge Studio
+<img src="packages/app/src/assets/logo.svg" width="56" height="56" align="right" alt="">
 
-Enhanced PicForge with photo filters, color controls and radial local editing.
+# PicForge
 
-Public website: https://picforge-studio.lsy42706.chatgpt.site
+This enhanced edition is based on [DejavuMoe/PicForge](https://github.com/DejavuMoe/PicForge). It adds eight photo filters, exposure/vibrance/color controls, and circular local adjustments with feathering and inside/outside selection. Original MIT attribution and codec licenses are retained.
 
-Based on https://github.com/DejavuMoe/PicForge. Original MIT attribution and codec licenses are retained.
+Compress images, split Android Motion Photos, and convert iOS Live Photos. An open-source toolbox that runs in your browser and keeps your files on your device.
+
+[Open PicForge Studio](https://picforge-studio.lsy42706.chatgpt.site) · **English** · [简体中文](docs/readme/README.zh-CN.md) · [繁體中文](docs/readme/README.zh-TW.md) · [日本語](docs/readme/README.ja.md) · [한국어](docs/readme/README.ko.md)
+
+![PicForge: original and compressed image, file queue and output settings](docs/assets/readme/compression-en.jpg)
+
+*The current interface, processing the project's generated dune sample. Sizes shown are actual results for this image, not a compression benchmark.*
+
+## Three tools
+
+| Tool | What it does | Export |
+| --- | --- | --- |
+| **Image compression** | Batch compression, format conversion and resizing. Accepts JPEG, PNG, WebP, AVIF, GIF, APNG, BMP and SVG, subject to browser decoding support. | JPEG, WebP, PNG or AVIF; animations: WebP only |
+| **Android Motion Photos** | Splits a JPG containing an appended video into its original photo and video, without re-encoding. | Original JPG + MP4 |
+| **iOS Live Photos** | Pairs HEIC/HEIF and MOV using Apple's Live Photo identifier, or by filename when a file lacks it, and converts them for sharing. Individual photos or videos also work; JPEG and MP4 inputs are accepted too. | JPEG + H.264 MP4, with optional AAC audio |
+
+### Image compression
+
+- **Color edits and filters:** open Color & filters in the inspector. Eight looks (including Original) with adjustable strength, plus exposure, brilliance, brightness, contrast, highlights, shadows, whites, blacks, saturation, vibrance, temperature, tint, sharpness and vignette. Edits are applied locally before JPEG/WebP/PNG/AVIF encoding and recorded in the ZIP manifest. Global and per-image snapshots retain separate edits. Reset edits affects only color settings. Animated inputs require neutral edits; they are never silently flattened. See [color adjustments](docs/color-adjustments.md).
+
+- **Local circle selection:** drag a circle to move or resize it, feather its edge, and edit either its inside or outside. All color controls and filters are available for an independent per-image local layer. Selection guides are excluded from exports.
+
+Drop in images, paste from the clipboard, or open the sample from the home page. Processing starts automatically when you add files or change settings.
+
+- Compare the original and result with a slider or side by side; zoom in or open fullscreen to check details.
+- Apply settings to all images, or give one image its own settings. Later global edits leave those custom settings alone.
+- Resize by pixels or percentage. Fit keeps proportions without enlarging; center crop fills the frame; stretch uses the exact width and height.
+- PNG output is lossless. Its compression does not use the quality slider.
+- Animated GIF/APNG exports as [animated WebP](docs/animation-pipeline.md). JPEG/PNG/AVIF animation output is unsupported and reports a settings error; it never silently exports only the first frame.
+
+### Motion Photos and Live Photos
+
+Add originals, check the queue, then start the batch. Jobs run one at a time, with cancellation and retry. Preview photos and videos together, download them separately, or save completed results as a ZIP with a manifest.
+
+Android extraction keeps the original bytes. iOS conversion handles display crop and rotation, preserves source video timing by default, and offers a 30 fps option.
+
+<details>
+<summary>View both media tools</summary>
+
+**Android Motion Photos**
+
+![Android Motion Photo split into a photo and a playable video](docs/assets/readme/android-en.jpg)
+
+**iOS Live Photos**
+
+![iOS Live Photo converted to JPEG and MP4, with output settings](docs/assets/readme/ios-en.jpg)
+
+The media examples are synthesized from the same generated dune image. These are real extraction and conversion results, not camera compatibility tests. [Image provenance](docs/assets/readme/README.md).
+
+</details>
+
+## How files are processed
+
+Everything runs locally. No account, media upload, processing server or API key is needed. PicForge has no telemetry; the browser downloads the app and the engines it needs.
+
+| Path | Processing |
+| --- | --- |
+| Images | Compat normally decodes and resizes the original Blob inside its encoding Worker with `createImageBitmap` and OffscreenCanvas, then encodes with `@jsquash/*`. SVG and unsupported Worker decoding use the main-thread Canvas fallback. |
+| Android | Validate the embedded MP4 structure, then split the original file into JPG and MP4 byte ranges. |
+| iOS | Pair by Apple's Live Photo identifier, otherwise matching filenames. HEIC is decoded by the browser where the result can be verified (Safari), otherwise by libheif; supported colour profiles convert to sRGB before MozJPEG encoding. Eligible source-timed video uses WebCodecs, with FFmpeg for PCM audio and as the fallback for unsupported or failed video conversion; explicit 30 fps uses FFmpeg. |
+
+Results stay in browser memory until you download them. Switching tools, returning home and using Back/Forward keep your queues. **Reloading or closing the page clears files and results.**
+
+## Before you start
+
+- **Live Photo pairing checks Apple's identifier when both files contain it**; files without it are paired by filename only. Keep the originals: exports are sharing derivatives, not an archive of HEIC HDR, metadata or auxiliary images. Supported HEIC colour profiles convert to sRGB; LUT-only RGB profiles are embedded in the JPEG.
+- **Browser support varies.** Image decoding and video preview depend on the browser and codec. An extracted video can still be downloaded if it cannot play in the preview. Large files may hit memory or size limits.
+- **Offline use needs a first load.** The app can work from its cache; conversion engines must also have loaded and cached successfully. Your first conversion may need a connection.
+
+The interface supports English, Simplified Chinese, Traditional Chinese, Japanese and Korean, with light and dark themes. Language and theme follow your browser/system until you choose otherwise.
+
+## Run locally
+
+Requires **Node.js 22.13+ (22.x) / 24+** and **pnpm 11.8.x**.
+
+The pinned HEIC module and WASM are included as [versioned static assets](docs/heif-build.md). Normal development and CI do not need Emscripten or a separate codec build.
+
+```sh
+git clone https://github.com/lsy42706-dotcom/The-Multi-Functional-Version-of-PicForge.git PicForge
+cd PicForge
+pnpm install
+pnpm dev
+```
+
+Open [127.0.0.1:5173](http://127.0.0.1:5173). Use `pnpm build` to build and `pnpm preview` to preview. Dev/build prepare the self-hosted codecs under `/wasm/`; the build also generates the service worker's asset list.
+
+## Under the hood
+
+| Part | Stack |
+| --- | --- |
+| Interface | React 19, TypeScript, Vite 8, plain CSS |
+| State and translation | Zustand, i18next |
+| Media | Canvas, Web Workers, WebCodecs, WebAssembly, `@jsquash/*`, libheif, FFmpeg |
+| Downloads and offline use | JSZip, Service Worker |
+
+`packages/app` contains the interface and media tools, `packages/worker` the image pipeline and workers, and `packages/codecs` the encoder adapters and settings. Compression uses the **Compat** engine.
+
+For changes, run:
+
+```sh
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm test:heif
+pnpm test:build
+pnpm build
+```
+
+See the [documentation index](docs/README.md), [architecture](docs/architecture.md), [validation guide](docs/validation.md), [QA checklist](docs/QA_CHECKLIST.md) and [UI design](docs/UI_DESIGN.md). Playwright WebKit results do not establish real Safari or iPhone support.
+
+Bug reports and patches are welcome. Include the browser, reproduction steps and relevant format/settings. Please keep private photos out of issues and commits; a non-personal reproducer is best.
+
+## License
+
+App code is [MIT](LICENSE). Media components have their own licenses, including [GPL FFmpeg](packages/app/public/licenses/FFmpeg-GPL-2.0.txt) and [LGPL libheif](packages/app/public/licenses/libheif-LGPL-3.0.txt). See [NOTICE.txt](packages/app/public/licenses/NOTICE.txt) for component credits, including MotionFlow.
+
+If you distribute codec binaries, you must also meet their corresponding-source obligations. The app's MIT license does not replace those licenses.
+
+## Public hosting
+
+The HTTPS site is hosted with Sites. Before Sites packaging, fetch the codec source archives with `python scripts/prepare-codec-sources.py`, then run `pnpm build` and `node scripts/prepare-sites-output.mjs` to prepare the static `dist/` directory specified in `.openai/hosting.json`. Codec sources and rebuild materials are served under `/licenses/sources/`. Large downloaded source archives are hosted there and regenerated separately from the GitHub source checkout. Local photo processing does not require a backend or API key.

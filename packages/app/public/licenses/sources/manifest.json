@@ -1,0 +1,183 @@
+{
+  "ffmpeg_core": "0.12.10",
+  "ffmpeg_wasm_release": "v12.15",
+  "sources": [
+    {
+      "component": "ffmpeg-wasm",
+      "revision": "v12.15",
+      "url": "https://codeload.github.com/ffmpegwasm/ffmpeg.wasm/tar.gz/v12.15",
+      "archive": "ffmpeg-wasm-v12.15.tar.gz",
+      "sha256": "98e473f975e4aa6e5836d99078c40db5d8f4ea52685e6411025f2d7b876a7569",
+      "bytes": 1329034
+    },
+    {
+      "component": "ffmpeg",
+      "revision": "n5.1.4",
+      "url": "https://codeload.github.com/FFmpeg/FFmpeg/tar.gz/n5.1.4",
+      "archive": "ffmpeg-n5.1.4.tar.gz",
+      "sha256": "6ed8ba17d513955cd9a03d0d87195b8eac3d148dcb61ef30ebddf1a3cd718de8",
+      "bytes": 14419343
+    },
+    {
+      "component": "x264",
+      "revision": "4-cores",
+      "url": "https://codeload.github.com/ffmpegwasm/x264/tar.gz/4-cores",
+      "archive": "x264-4-cores.tar.gz",
+      "sha256": "cc64a8972d47d835c9f7626b735bf270b81c9a8197c250e75dfe0dfdc7835b10",
+      "bytes": 941411
+    },
+    {
+      "component": "x265",
+      "revision": "3.4",
+      "url": "https://codeload.github.com/ffmpegwasm/x265/tar.gz/3.4",
+      "archive": "x265-3.4.tar.gz",
+      "sha256": "abd37f4ab99570fcf2272c47239653204b0854ea5ef19df3729112aaa1f6f311",
+      "bytes": 1530201
+    },
+    {
+      "component": "libvpx",
+      "revision": "v1.13.1",
+      "url": "https://codeload.github.com/ffmpegwasm/libvpx/tar.gz/v1.13.1",
+      "archive": "libvpx-v1.13.1.tar.gz",
+      "sha256": "00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14",
+      "bytes": 5515662
+    },
+    {
+      "component": "lame",
+      "revision": "master",
+      "url": "https://codeload.github.com/ffmpegwasm/lame/tar.gz/master",
+      "archive": "lame-master.tar.gz",
+      "sha256": "462522855b5406ee9e083a23a105ff8342fc0648a07fd9d0c50545c337ff6634",
+      "bytes": 1524603
+    },
+    {
+      "component": "ogg",
+      "revision": "v1.3.4",
+      "url": "https://codeload.github.com/ffmpegwasm/Ogg/tar.gz/v1.3.4",
+      "archive": "ogg-v1.3.4.tar.gz",
+      "sha256": "17e130f823c497ae6be169838389b502a2e8789bad208bb6e39db4618f1f4ece",
+      "bytes": 255906
+    },
+    {
+      "component": "theora",
+      "revision": "v1.1.1",
+      "url": "https://codeload.github.com/ffmpegwasm/theora/tar.gz/v1.1.1",
+      "archive": "theora-v1.1.1.tar.gz",
+      "sha256": "1d5c3b25bbced448f3e741c42df6796e3d5e57136a74bcd68262318290ec2982",
+      "bytes": 1132902
+    },
+    {
+      "component": "opus",
+      "revision": "v1.3.1",
+      "url": "https://codeload.github.com/ffmpegwasm/opus/tar.gz/v1.3.1",
+      "archive": "opus-v1.3.1.tar.gz",
+      "sha256": "4834a8944c33a7ecab5cad9454eeabe4680ca1842cb8f5a2437572dbf636de8f",
+      "bytes": 828897
+    },
+    {
+      "component": "vorbis",
+      "revision": "v1.3.3",
+      "url": "https://codeload.github.com/ffmpegwasm/vorbis/tar.gz/v1.3.3",
+      "archive": "vorbis-v1.3.3.tar.gz",
+      "sha256": "3dbb847196087dfabc54f24930191ff50f19868f34458c0f5d6f9789eeb675ff",
+      "bytes": 1324249
+    },
+    {
+      "component": "zlib",
+      "revision": "v1.2.11",
+      "url": "https://codeload.github.com/ffmpegwasm/zlib/tar.gz/v1.2.11",
+      "archive": "zlib-v1.2.11.tar.gz",
+      "sha256": "629380c90a77b964d896ed37163f5c3a34f6e6d897311f1df2a7016355c45eff",
+      "bytes": 644492
+    },
+    {
+      "component": "libwebp",
+      "revision": "v1.3.2",
+      "url": "https://codeload.github.com/ffmpegwasm/libwebp/tar.gz/v1.3.2",
+      "archive": "libwebp-v1.3.2.tar.gz",
+      "sha256": "c2c2f521fa468e3c5949ab698c2da410f5dce1c5e99f5ad9e70e0e8446b86505",
+      "bytes": 3685345
+    },
+    {
+      "component": "freetype2",
+      "revision": "VER-2-10-4",
+      "url": "https://codeload.github.com/ffmpegwasm/freetype2/tar.gz/VER-2-10-4",
+      "archive": "freetype2-VER-2-10-4.tar.gz",
+      "sha256": "b1708021058e573847bcf626f81eac02e4fe47a093a98260c1c73c6492b14db0",
+      "bytes": 2093212
+    },
+    {
+      "component": "fribidi",
+      "revision": "v1.0.9",
+      "url": "https://codeload.github.com/fribidi/fribidi/tar.gz/v1.0.9",
+      "archive": "fribidi-v1.0.9.tar.gz",
+      "sha256": "ef6f940d04213a0fb91a0177b2b57df2031bf3a7e2cd0ee2c6877a160fc206df",
+      "bytes": 2088184
+    },
+    {
+      "component": "harfbuzz",
+      "revision": "5.2.0",
+      "url": "https://codeload.github.com/harfbuzz/harfbuzz/tar.gz/5.2.0",
+      "archive": "harfbuzz-5.2.0.tar.gz",
+      "sha256": "a9fd9869efeec4cd6ab34527ed1e82df65be39cbfdb750d02dfa66148eac4c04",
+      "bytes": 32956027
+    },
+    {
+      "component": "libass",
+      "revision": "0.15.0",
+      "url": "https://codeload.github.com/libass/libass/tar.gz/0.15.0",
+      "archive": "libass-0.15.0.tar.gz",
+      "sha256": "232b1339c633e6a93c153cac7a483e536944921605f35fcbaedc661c62fb49ec",
+      "bytes": 243154
+    },
+    {
+      "component": "zimg",
+      "revision": "release-3.0.5",
+      "url": "https://codeload.github.com/sekrit-twc/zimg/tar.gz/release-3.0.5",
+      "archive": "zimg-release-3.0.5.tar.gz",
+      "sha256": "a9a0226bf85e0d83c41a8ebe4e3e690e1348682f6a2a7838f1b8cbff1b799bcf",
+      "bytes": 326694
+    },
+    {
+      "component": "sdl2",
+      "revision": "release-2.24.2",
+      "url": "https://codeload.github.com/libsdl-org/SDL/tar.gz/release-2.24.2",
+      "archive": "sdl2-release-2.24.2.tar.gz",
+      "sha256": "be08ca66d11b1743996cb69a9b6c44771e16084a2dbcb4b61e52d9ac4983f4fc",
+      "bytes": 7885251
+    },
+    {
+      "component": "emscripten-ffmpeg",
+      "revision": "3.1.40",
+      "url": "https://codeload.github.com/emscripten-core/emscripten/tar.gz/3.1.40",
+      "archive": "emscripten-ffmpeg-3.1.40.tar.gz",
+      "sha256": "eb74cea5feb8881c28e9bb5a6798e7f4e59686e60d8a1bac39e9063a451210e5",
+      "bytes": 28780461
+    },
+    {
+      "component": "emscripten-heif",
+      "revision": "3.1.61",
+      "url": "https://codeload.github.com/emscripten-core/emscripten/tar.gz/3.1.61",
+      "archive": "emscripten-heif-3.1.61.tar.gz",
+      "sha256": "bc5eff3d929a208173a61de47f0084e687d06df442c03684a796538d51e4a38b",
+      "bytes": 29346100
+    },
+    {
+      "component": "libheif",
+      "revision": "1.23.4",
+      "url": "https://github.com/strukturag/libheif/releases/download/v1.23.4/libheif-1.23.4.tar.gz",
+      "archive": "libheif-1.23.4.tar.gz",
+      "sha256": "d0c02b4b0e978f34a1974b6f3eea7975a537bf7a9195ffeea38e7242ff316fdd",
+      "bytes": 2217221
+    },
+    {
+      "component": "libde265",
+      "revision": "1.1.1",
+      "url": "https://github.com/strukturag/libde265/releases/download/v1.1.1/libde265-1.1.1.tar.gz",
+      "archive": "libde265-1.1.1.tar.gz",
+      "sha256": "fd48a927e94ed74fc7ce8829d222b9d8599fcbfe8b6448ba66705babc56ab219",
+      "bytes": 315566
+    }
+  ],
+  "build_instructions": "README.txt"
+}

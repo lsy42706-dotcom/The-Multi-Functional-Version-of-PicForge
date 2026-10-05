@@ -1,0 +1,55 @@
+{
+  "name": "pic-forge",
+  "version": "0.19.3",
+  "private": true,
+  "description": "Local browser image toolbox with filters, color controls and radial local editing",
+  "license": "MIT",
+  "author": "DejavuMoe",
+  "homepage": "https://picforge-studio.lsy42706.chatgpt.site",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsy42706-dotcom/The-Multi-Functional-Version-of-PicForge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lsy42706-dotcom/The-Multi-Functional-Version-of-PicForge/issues"
+  },
+  "packageManager": "pnpm@11.8.0",
+  "scripts": {
+    "dev": "pnpm --filter @pic-forge/app dev",
+    "build": "pnpm --filter @pic-forge/app build",
+    "preview": "pnpm --filter @pic-forge/app preview",
+    "assets:brand": "python3 packages/app/scripts/generate-brand-assets.py",
+    "codecs:heif": "python scripts/build-heif.py",
+    "test:heif": "node --test scripts/verify-heif.test.mjs",
+    "test:build": "node --test scripts/static-codecs.test.mjs scripts/performance/validate.test.mjs",
+    "lint": "eslint packages/*/src/**/*.{ts,tsx}",
+    "format": "prettier --write packages/*/src/**/*.{ts,tsx}",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm typecheck:app && pnpm typecheck:worker && pnpm typecheck:codecs",
+    "typecheck:app": "tsc --noEmit -p packages/app/tsconfig.json",
+    "typecheck:worker": "tsc --noEmit -p packages/worker/tsconfig.json",
+    "typecheck:codecs": "tsc --noEmit -p packages/codecs/tsconfig.json",
+    "test:browser": "pnpm build && node scripts/browser-check.mjs",
+    "benchmark": "tsc -p scripts/performance/tsconfig.json && node scripts/performance/run.mjs",
+    "test:animation": "node scripts/animation/check.mjs",
+    "benchmark:animation": "node scripts/animation/benchmark.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "@typescript-eslint/eslint-plugin": "^8.70.0",
+    "@typescript-eslint/parser": "^8.70.0",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "playwright": "1.58.2",
+    "prettier": "^3.9.6",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.1"
+  },
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0",
+    "pnpm": "^11.8.0"
+  },
+  "type": "module"
+}

@@ -1,0 +1,126 @@
+{
+  "master": "packages/app/src/assets/logo.svg",
+  "typeface": "IBM Plex Sans 1.1.0 (rendered to outlines; no runtime font download)",
+  "exports": [
+    {
+      "path": "docs/design/social-card.svg",
+      "bytes": 112858,
+      "sha256": "292b4fa4451c2a1c3f432b50b1244bb4b97eb6a4fe0d5aabab3ff4729fa575c8"
+    },
+    {
+      "path": "docs/design/twitter-card.svg",
+      "bytes": 112858,
+      "sha256": "07f766f03a54c73e8b65bb0e0a94f0d2fd7ff5d11417e83a2f37a26c61c30c17"
+    },
+    {
+      "path": "packages/app/public/apple-touch-icon.png",
+      "bytes": 4612,
+      "sha256": "c93aed5e0f35f11edc6f2dda00113209ab43b00566b6e85a269f55ae0c72b708"
+    },
+    {
+      "path": "packages/app/public/brand/logo-512.png",
+      "bytes": 15293,
+      "sha256": "49d4affde32990e34a81575a36d51a91dce0718435812693120e11ea1d46dd88"
+    },
+    {
+      "path": "packages/app/public/brand/logo-black.svg",
+      "bytes": 607,
+      "sha256": "5410bcf0fb689579fe21997580ddc3d81a247c77d62ce5b82f7141fc45cf583f"
+    },
+    {
+      "path": "packages/app/public/brand/logo-lockup-white.svg",
+      "bytes": 10953,
+      "sha256": "2d99907c3692db81f38daca8d5cc1a4a3b49cb7a7325a28a0f40055c388f684a"
+    },
+    {
+      "path": "packages/app/public/brand/logo-lockup.png",
+      "bytes": 20542,
+      "sha256": "56f9b6a3840b407467c6401a10a7697d8f3a7f9b3f5cd6c2846ea68c0b0d2dd4"
+    },
+    {
+      "path": "packages/app/public/brand/logo-lockup.svg",
+      "bytes": 10953,
+      "sha256": "2a0453368b1855c4ec7ee70c0bdf92c12e6126386dad319c3dbd87b0e9a2b721"
+    },
+    {
+      "path": "packages/app/public/brand/logo-on-dark.svg",
+      "bytes": 607,
+      "sha256": "428b896e69974cc4fbedb968bb8f96d43c4df485128beac8aa7d6e340e5072bb"
+    },
+    {
+      "path": "packages/app/public/brand/logo-white.svg",
+      "bytes": 601,
+      "sha256": "6ed6453f5a135d38a00b1868b4fae76dca513a0bed3be78fb4d405d3e635ecf1"
+    },
+    {
+      "path": "packages/app/public/brand/logo.svg",
+      "bytes": 607,
+      "sha256": "4cb1002266ca8e3987692cb01e8debee0838ab17ba84c768945964366759d512"
+    },
+    {
+      "path": "packages/app/public/favicon-16.png",
+      "bytes": 436,
+      "sha256": "7a13bb72ac69880c105acd2d48eff04f2d683e8dbc9049faae77c22bd1ae7e80"
+    },
+    {
+      "path": "packages/app/public/favicon-32.png",
+      "bytes": 758,
+      "sha256": "3ea826f50eb0f1396503ce8498bb9755772c4068e6981787b071d316fbafe5a2"
+    },
+    {
+      "path": "packages/app/public/favicon-48.png",
+      "bytes": 1042,
+      "sha256": "290b9ad14b8660f4c3c7cce523ebda54c53cc2b14f904752b574cb719fe56a89"
+    },
+    {
+      "path": "packages/app/public/favicon.ico",
+      "bytes": 7406,
+      "sha256": "15f1dd782daac2f0abac9e66878ee37fc3043e92c93062760f8f7ed9b33656c9"
+    },
+    {
+      "path": "packages/app/public/favicon.svg",
+      "bytes": 701,
+      "sha256": "d2bfa4bc46ed117b3d1b6402524386f447f95acfbb608bb5a702aa9abc8fb774"
+    },
+    {
+      "path": "packages/app/public/og-image.jpg",
+      "bytes": 48409,
+      "sha256": "aa9d55e508d7264fa32d1991414d5e707eccf159c1039b06e5d0cb5da5041886"
+    },
+    {
+      "path": "packages/app/public/og-image.png",
+      "bytes": 41430,
+      "sha256": "94de7ef6740a5cef299455a121653e136b1e053a746562d40bba94617852abe3"
+    },
+    {
+      "path": "packages/app/public/pwa-192.png",
+      "bytes": 6177,
+      "sha256": "16e331e578d44fe2eda2724519f8fae1edd77bea57343d27d44c83d6cab1cdb3"
+    },
+    {
+      "path": "packages/app/public/pwa-512.png",
+      "bytes": 17381,
+      "sha256": "f6086aae329a7257f5dac94f0a77bf0ca3b691d24ea618f7aa4e1d09a961dba8"
+    },
+    {
+      "path": "packages/app/public/pwa-icon.svg",
+      "bytes": 702,
+      "sha256": "2d7b6f87497f54e63b3dbb544413d36e5489efa47cb6199c6a5dbe881e1b9033"
+    },
+    {
+      "path": "packages/app/public/pwa-maskable-512.png",
+      "bytes": 13629,
+      "sha256": "bb3e3b214fbe93bd6d8458a004db0e460739c001487f4564d9b09417ccd55027"
+    },
+    {
+      "path": "packages/app/public/twitter-card.png",
+      "bytes": 41358,
+      "sha256": "e2724596b74f5d6b62da5852f93f2872a6834f4d73d123d7affbe406b0303efb"
+    },
+    {
+      "path": "packages/app/src/assets/logo-tile.svg",
+      "bytes": 701,
+      "sha256": "d2bfa4bc46ed117b3d1b6402524386f447f95acfbb608bb5a702aa9abc8fb774"
+    }
+  ]
+}

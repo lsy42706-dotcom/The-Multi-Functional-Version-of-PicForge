@@ -1,0 +1,178 @@
+/**
+ * Supported output image formats.
+ */
+export type OutputFormat = 'mozjpeg' | 'webp' | 'avif' | 'oxipng';
+
+/**
+ * Resize fit method.
+ */
+export type ResizeMethod = 'contain' | 'cover' | 'stretch';
+
+/**
+ * Resize mode: absolute pixel dimensions or percentage scaling.
+ */
+export type ResizeMode = 'absolute' | 'percentage';
+
+/**
+ * Resize options.
+ */
+export interface ResizeOptions {
+  enabled: boolean;
+  /** Resize mode: 'absolute' uses maxWidth/maxHeight, 'percentage' uses percentage */
+  mode: ResizeMode;
+  /** Max width in pixels (absolute mode) */
+  maxWidth: number;
+  /** Max height in pixels (absolute mode) */
+  maxHeight: number;
+  /** Scale percentage 1-100 (percentage mode) */
+  percentage: number;
+  method: ResizeMethod;
+}
+
+/**
+ * MozJPEG encoding options.
+ */
+export interface MozjpegOptions {
+  quality: number;
+  baseline: boolean;
+  arithmetic: boolean;
+  progressive: boolean;
+  optimize_coding: boolean;
+  smoothing: number;
+  color_space: number;
+  quant_table: number;
+  trellis_multipass: boolean;
+  trellis_opt_zero: boolean;
+  trellis_opt_table: boolean;
+  trellis_loops: number;
+  auto_subsample: boolean;
+  chroma_subsample: number;
+  separate_chroma_quality: boolean;
+  chroma_quality: number;
+}
+
+/**
+ * WebP encoding options.
+ */
+export interface WebpOptions {
+  quality: number;
+  target_size: number;
+  target_PSNR: number;
+  method: number;
+  sns_strength: number;
+  filter_strength: number;
+  filter_sharpness: number;
+  filter_type: number;
+  partitions: number;
+  segments: number;
+  pass: number;
+  show_compressed: number;
+  preprocessing: number;
+  autofilter: number;
+  partition_limit: number;
+  alpha_compression: number;
+  alpha_filtering: number;
+  alpha_quality: number;
+  lossless: number;
+  exact: number;
+  image_hint: number;
+  emulate_jpeg_size: number;
+  thread_level: number;
+  low_memory: number;
+  near_lossless: number;
+  use_delta_palette: number;
+  use_sharp_yuv: number;
+}
+
+/**
+ * jSquash AVIF chroma subsample values.
+ * 4:2:0 is 1; 4:4:4 is 3. 0 is monochrome and must not be used for 4:4:4.
+ */
+export const AVIF_CHROMA_SUBSAMPLE = {
+  YUV420: 1,
+  YUV444: 3,
+} as const;
+
+/**
+ * AVIF encoding options matching @jsquash/avif 2.x (`quality` / `qualityAlpha`).
+ * quality is 0–100. quality=100 is not treated as lossless unless `lossless` is set.
+ */
+export interface AvifOptions {
+  quality: number;
+  qualityAlpha: number;
+  denoiseLevel: number;
+  tileColsLog2: number;
+  tileRowsLog2: number;
+  speed: number;
+  subsample: number;
+  chromaDeltaQ: boolean;
+  sharpness: number;
+  tune: number;
+}
+
+/**
+ * OxiPNG encoding options.
+ */
+export interface OxipngOptions {
+  level: number;
+  interlace: boolean;
+  optimizeAlpha: boolean;
+}
+
+/**
+ * Union of all encoder options.
+ */
+export type EncoderOptions = MozjpegOptions | WebpOptions | AvifOptions | OxipngOptions;
+
+/**
+ * Full compression settings.
+ */
+export interface CompressSettings {
+  outputFormat: OutputFormat;
+  quality: number;
+  resize?: ResizeOptions;
+  advanced?: Partial<EncoderOptions>;
+  /** Non-destructive edits, applied to decoded pixels before encoding. */
+  adjustments?: Partial<ImageAdjustments>;
+  /** One independent radial edit, positioned in the final resized image. */
+  localAdjustment?: LocalAdjustment;
+}
+
+export interface RadialSelection {
+  /** Centre as a fraction of the output width/height. */
+  x: number;
+  y: number;
+  /** Circle radius as a fraction of the shorter output dimension. */
+  radius: number;
+  /** Fraction of radius used for the soft inner edge (0…1). */
+  feather: number;
+  inverted: boolean;
+}
+
+export interface LocalAdjustment {
+  selection: RadialSelection;
+  adjustments: Partial<ImageAdjustments>;
+}
+
+export type ImageFilter =
+  'original' | 'vivid' | 'warm' | 'cool' | 'vintage' | 'film' | 'noir' | 'fade';
+
+export interface ImageAdjustments {
+  filter: ImageFilter;
+  filterIntensity: number;
+  /** -100…100 maps to -2…2 exposure stops. */
+  exposure: number;
+  brilliance: number;
+  brightness: number;
+  contrast: number;
+  highlights: number;
+  shadows: number;
+  whites: number;
+  blacks: number;
+  saturation: number;
+  vibrance: number;
+  temperature: number;
+  tint: number;
+  sharpness: number;
+  vignette: number;
+}

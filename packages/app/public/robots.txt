@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://picforge-studio.lsy42706.chatgpt.site/sitemap.xml
